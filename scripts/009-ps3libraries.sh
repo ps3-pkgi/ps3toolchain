@@ -12,7 +12,7 @@ if [ ! -d ${PS3LIBRARIES} ]; then
     rm -Rf $PS3LIBRARIES && mkdir $PS3LIBRARIES && unzip $PS3LIBRARIES.zip
 
 fi
-mv ps3libraries-mastee ps3libraries
+mv ps3libraries-master ps3libraries
 cd $PS3LIBRARIES
 
 ## Compile and install.
