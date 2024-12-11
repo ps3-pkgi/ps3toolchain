@@ -1,19 +1,20 @@
 #!/bin/sh -e
 # gdb-PPU.sh by Naomi Peori (naomi@peori.ca)
+set -x
 
 GDB="gdb-8.3.1"
 
 if [ ! -d ${GDB} ]; then
 
   ## Download the source code.
-  if [ ! -f ${GDB}.tar.xz ]; then wget --continue https://ftp.gnu.org/gnu/gdb/${GDB}.tar.xz; fi
+  if [ ! -f ${GDB}.tar.xz ]; then aria2c https://ftp.gnu.org/gnu/gdb/${GDB}.tar.xz; fi
 
   ## Download an up-to-date config.guess and config.sub
-  if [ ! -f config.guess ]; then wget --continue https://git.savannah.gnu.org/cgit/config.git/plain/config.guess; fi
-  if [ ! -f config.sub ]; then wget --continue https://git.savannah.gnu.org/cgit/config.git/plain/config.sub; fi
+  if [ ! -f config.guess ]; then aria2c https://git.savannah.gnu.org/cgit/config.git/plain/config.guess; fi
+  if [ ! -f config.sub ]; then aria2c https://git.savannah.gnu.org/cgit/config.git/plain/config.sub; fi
 
   ## Unpack the source code.
-  tar xfvJ ${GDB}.tar.xz
+  tar xfJ ${GDB}.tar.xz
 
   ## Patch the source code.
   cat ../patches/${GDB}-PS3.patch | patch -p1 -d ${GDB}

@@ -1,19 +1,20 @@
 #!/bin/sh -e
 # binutils-PPU.sh by Naomi Peori (naomi@peori.ca)
+set -x
 
 BINUTILS="binutils-2.42"
 
 if [ ! -d ${BINUTILS} ]; then
 
   ## Download the source code.
-  if [ ! -f ${BINUTILS}.tar.bz2 ]; then wget --continue https://ftp.gnu.org/gnu/binutils/${BINUTILS}.tar.bz2; fi
+  if [ ! -f ${BINUTILS}.tar.bz2 ]; then aria2c https://ftp.gnu.org/gnu/binutils/${BINUTILS}.tar.bz2; fi
 
   ## Download an up-to-date config.guess and config.sub
-  if [ ! -f config.guess ]; then wget --continue https://git.savannah.gnu.org/cgit/config.git/plain/config.guess; fi
-  if [ ! -f config.sub ]; then wget --continue https://git.savannah.gnu.org/cgit/config.git/plain/config.sub; fi
+  if [ ! -f config.guess ]; then aria2c https://git.savannah.gnu.org/cgit/config.git/plain/config.guess; fi
+  if [ ! -f config.sub ]; then aria2c https://git.savannah.gnu.org/cgit/config.git/plain/config.sub; fi
 
   ## Unpack the source code.
-  tar xfvj ${BINUTILS}.tar.bz2
+  tar xfj ${BINUTILS}.tar.bz2
 
   ## Patch the source code.
   cat ../patches/${BINUTILS}-PS3-PPU.patch | patch -p1 -d ${BINUTILS}

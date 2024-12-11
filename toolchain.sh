@@ -1,5 +1,6 @@
 #!/bin/sh
 # toolchain.sh by Naomi Peori (naomi@peori.ca)
+set -x
 
 ## Enter the ps3toolchain directory.
 cd "`dirname $0`" || { echo "ERROR: Could not enter the ps3toolchain directory."; exit 1; }

@@ -1,5 +1,6 @@
 #!/bin/bash -e
 # gcc-newlib-PPU.sh by Naomi Peori (naomi@peori.ca)
+set -x
 
 GCC="gcc-13.2.0"
 NEWLIB="newlib-1.20.0"
@@ -7,12 +8,12 @@ NEWLIB="newlib-1.20.0"
 if [ ! -d ${GCC} ]; then
 
   ## Download the source code.
-  if [ ! -f ${GCC}.tar.xz ]; then wget --continue https://ftp.gnu.org/gnu/gcc/${GCC}/${GCC}.tar.xz; fi
-  if [ ! -f ${NEWLIB}.tar.gz ]; then wget --continue https://sourceware.org/pub/newlib/${NEWLIB}.tar.gz; fi
+  if [ ! -f ${GCC}.tar.xz ]; then aria2c https://ftp.gnu.org/gnu/gcc/${GCC}/${GCC}.tar.xz; fi
+  if [ ! -f ${NEWLIB}.tar.gz ]; then aria2c https://sourceware.org/pub/newlib/${NEWLIB}.tar.gz; fi
 
   ## Unpack the source code.
-  rm -Rf ${GCC} && tar xfvJ ${GCC}.tar.xz
-  rm -Rf ${NEWLIB} && tar xfvz ${NEWLIB}.tar.gz
+  rm -Rf ${GCC} && tar xfJ ${GCC}.tar.xz
+  rm -Rf ${NEWLIB} && tar xfz ${NEWLIB}.tar.gz
 
   ## Patch the source code.
   cat ../patches/${GCC}-PS3-PPU.patch | patch -p1 -d ${GCC}
