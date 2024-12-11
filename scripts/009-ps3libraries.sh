@@ -16,4 +16,4 @@ fi
 cd $PS3LIBRARIES
 
 ## Compile and install.
-./libraries.sh
+bash -x ./libraries.sh
