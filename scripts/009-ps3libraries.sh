@@ -6,13 +6,13 @@ PS3LIBRARIES="ps3libraries"
 if [ ! -d ${PS3LIBRARIES} ]; then
 
     ## Download the source code.
-     aria2c https://github.com/bucanero/$PS3LIBRARIES/tarball/psl1ght-2.30.1 -o $PS3LIBRARIES.tar.gz
+     aria2c https://github.com/bucanero/ps3libraries/archive/refs/heads/master.zip -o $PS3LIBRARIES.zip
 
     ## Unpack the source code.
-    rm -Rf $PS3LIBRARIES && mkdir $PS3LIBRARIES && tar --strip-components=1 --directory=$PS3LIBRARIES -xzf $PS3LIBRARIES.tar.gz
+    rm -Rf $PS3LIBRARIES && mkdir $PS3LIBRARIES && unzip $PS3LIBRARIES.zip
 
 fi
-
+mv ps3libraries-mastee ps3libraries
 cd $PS3LIBRARIES
 
 ## Compile and install.
