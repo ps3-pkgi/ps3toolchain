@@ -6,10 +6,10 @@ PS3LIBRARIES="ps3libraries"
 if [ ! -d ${PS3LIBRARIES} ]; then
 
     ## Download the source code.
-    git clone https://github.com/bucanero/ps3libraries --depth=1
+    git clone https://github.com/ps3-pkgi/ps3libraries --depth=1
 
 fi
 cd $PS3LIBRARIES
 
 ## Compile and install.
-bash -x ./libraries.sh
+bash ./libraries.sh
