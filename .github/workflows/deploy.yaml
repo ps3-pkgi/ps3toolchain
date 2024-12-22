@@ -13,8 +13,7 @@ jobs:
     
     strategy:
       matrix:
-        os: [ubuntu-24.04]
-        architecture: [x64]
+        cpu: [ppu,spu]
     defaults:
       run:
         shell: bash
@@ -72,6 +71,11 @@ jobs:
     - name: Runs all the stages in the shell
       run: |
         . ~/.bashrc
+        if [ ${{ matrix.cpu }} = "ppu" ]; then
+            rm -rf -v scripts/*spu*
+        else
+            rm -rf -v scripts/*ppu*
+        fi
         mkdir -p $PWD/ps3dev
         export PS3DEV=$PWD/ps3dev
         export PSL1GHT=$PS3DEV
