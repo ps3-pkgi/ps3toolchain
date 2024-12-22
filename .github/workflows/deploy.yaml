@@ -82,42 +82,4 @@ jobs:
         export PATH=$PATH:$PS3DEV/spu/bin
         export PATH=$PATH:$PS3DEV/portlibs/ppu/bin
         export PKG_CONFIG_PATH=$PS3DEV/portlibs/ppu/lib/pkgconfig
-        ./toolchain.sh
-
-    - name: Compress ps3dev folder
-      run: |
-        tar -zcvf ps3dev-${{matrix.os}}-${{steps.arch.outputs.arch}}-${{steps.date.outputs.date}}.tar.gz ps3dev
-
-    - name: Archive Folder
-      uses: actions/upload-artifact@v4
-      with:
-        name: ${{matrix.os}}-${{matrix.architecture}}
-        path: ps3dev-*.tar.gz
-
-  publish:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Download all Artifact
-        uses: actions/download-artifact@v4
-
-      - name: Set SemVer
-        id: semver
-        run: echo "::set-output name=semver::0.1.0+${{ needs.build.outputs.date }}.${{ needs.build.outputs.sha8 }}"
-  
-      - name: Create Tag
-        uses: negz/create-tag@v1
-        with:
-          version: ${{ steps.semver.outputs.semver }}
-          message: "automatic tag creation"
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ steps.semver.outputs.semver }}
-          files: |
-            ${{ github.workspace }}/**/*.tar.gz
-            
+        bash arm64.sh
