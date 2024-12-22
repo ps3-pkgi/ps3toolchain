@@ -11,6 +11,15 @@ mkdir -p build && cd build || { echo "ERROR: Could not create the build director
 apt update
 apt -y install autoconf automake bison flex gcc g++ libelf-dev make texinfo libncurses5-dev patch python3-dev subversion git zlib1g-dev libtool-bin python-dev-is-python3 bzip2 libgmp3-dev pkg-config libssl-dev aria2
 
+mkdir -p $PWD/ps3dev
+export PS3DEV=$PWD/ps3dev
+export PSL1GHT=$PS3DEV
+export PATH=$PATH:$PS3DEV/bin
+export PATH=$PATH:$PS3DEV/ppu/bin
+export PATH=$PATH:$PS3DEV/spu/bin
+export PATH=$PATH:$PS3DEV/portlibs/ppu/bin
+export PKG_CONFIG_PATH=$PS3DEV/portlibs/ppu/lib/pkgconfig
+
 ## Use gmake if available
 which gmake 1>/dev/null 2>&1 && export MAKE=gmake
 
