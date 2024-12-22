@@ -10,7 +10,7 @@ sudo apt install --no-install-recommends -y curl xz-utils git aria2 \
 
 git clone https://github.com/moe-hacker/ruri
 cd ruri
-cc -Wl,--gc-sections -static src/*.c src/easteregg/*.c -o ruri -lcap -lseccomp -lpthread -O3
+cc -Wl,--gc-sections -static src/*.c src/easteregg/*.c -o ruri -lcap -lseccomp -lpthread -O3 -Wno-error
 strip ruri
 cp -v ruri /usr/local/bin/
 ruri -v
@@ -26,6 +26,6 @@ rm -rf -v scripts/009-ps3libraries.sh
 sudo cp -rv depends patches scripts aarch64/
 sudo cp -v toolchain.sh aarch64/build.sh
 sudo chmod +x -v aarch64/build.sh
-rm aarch64/etc/resolv.conf
-echo nameserver 1.1.1.1 >aarch64/etc/resolv.conf
+sudo rm aarch64/etc/resolv.conf
+sudo echo nameserver 1.1.1.1 >aarch64/etc/resolv.conf
 sudo ./ruri/ruri -a aarch64 -q /usr/bin/qemu-aarch64-static ./aarch64 /bin/sh /build.sh
