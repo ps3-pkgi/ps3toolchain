@@ -76,7 +76,7 @@ jobs:
       run: |
         . ~/.bashrc
         if [ ${{ matrix.cpu }} = "spu" ]; then
-            rm -rf -v scripts/003-gdb-PPU.sh scripts/002-gcc-newlib-PPU.sh scripts/001-binutils-PPU.sh scripts/008-psl1ght.sh
+            rm -rf -v scripts/003-gdb-PPU.sh scripts/002-gcc-newlib-PPU.sh scripts/001-binutils-PPU.sh scripts/004* scripts/008-psl1ght.sh
         else
             rm -rf -v scripts/007-gdb-SPU.sh scripts/006-gcc-newlib-SPU.sh scripts/005-binutils-SPU.sh scripts/008-psl1ght.sh
         fi
