@@ -13,7 +13,11 @@ jobs:
     
     strategy:
       matrix:
-        cpu: [ppu,spu]
+        include:
+        - os: ubuntu-24.04
+          cpu: ppu
+        - os: ubuntu-22.04
+          cpu: spu
     defaults:
       run:
         shell: bash
