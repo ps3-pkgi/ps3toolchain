@@ -1,6 +1,6 @@
-#!/bin/bash -x
+#!/bin/bash -x -e
 
-sudo apt install --no-install-recommends -y curl xz-utils git aria2c \
+sudo apt install --no-install-recommends -y curl xz-utils git aria2 \
   make \
   gcc \
   libseccomp-dev \
