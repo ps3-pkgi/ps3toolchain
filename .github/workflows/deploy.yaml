@@ -75,10 +75,10 @@ jobs:
     - name: Runs all the stages in the shell
       run: |
         . ~/.bashrc
-        if [ ${{ matrix.cpu }} = "ppu" ]; then
-            rm -rf -v scripts/*spu*
+        if [ ${{ matrix.cpu }} = "spu" ]; then
+            rm -rf -v scripts/003-gdb-PPU.sh scripts/002-gcc-newlib-PPU.sh scripts/001-binutils-PPU.sh scripts/008-psl1ght.sh
         else
-            rm -rf -v scripts/*ppu*
+            rm -rf -v scripts/007-gdb-SPU.sh scripts/006-gcc-newlib-SPU.sh scripts/005-binutils-SPU.sh scripts/008-psl1ght.sh
         fi
         mkdir -p $PWD/ps3dev
         export PS3DEV=$PWD/ps3dev
