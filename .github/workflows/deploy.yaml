@@ -90,13 +90,13 @@ jobs:
         export PKG_CONFIG_PATH=$PS3DEV/portlibs/ppu/lib/pkgconfig
         bash arm64.sh
     - uses: actions/upload-artifact@v4
-      if: matrix.cpu == ppu
+      if: startsWith(matrix.cpu, 'ppu')
       with:
         name: ps3ppu-${{ github.sha}}
         path: aarch64/build/ps3dev
 
     - uses: actions/upload-artifact@v4
-      if: matrix.cpu == spu
+      if: startsWith(matrix.cpu, 'spu')
       with:
         name: ps3spu-${{ github.sha}}
         path: aarch64/build/ps3dev
