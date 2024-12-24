@@ -12,7 +12,7 @@ sudo apt install --no-install-recommends -y curl xz-utils git aria2 \
 
 git clone https://github.com/moe-hacker/ruri
 cd ruri
-cc -Wl,--gc-sections -static src/*.c src/easteregg/*.c -o ruri -lcap -lseccomp -lpthread -O3 -Wno-error
+cc -Wl,--gc-sections -ftree-vectorize -flto -funroll-loops -finline-functions -march=native -mtune=native -static src/*.c src/easteregg/*.c -o ruri -lcap -lseccomp -lpthread -O3 -Wno-error
 strip ruri
 cp -v ruri /usr/local/bin/
 ruri -v
