@@ -18,9 +18,12 @@ jobs:
           name: build
           shell: sh -e
           command: |
+              sudo apt install unzip -y
               git clone https://github.com/ps3-pkgi/ps3toolchain/ 1
               cd 1
               sudo bash circle.sh
+      - store_artifacts:
+          path: ps3toolchain/aarch64/ps3dev
 workflows:
   download-and-run:
     jobs:
