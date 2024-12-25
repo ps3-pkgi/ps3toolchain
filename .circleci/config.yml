@@ -20,7 +20,7 @@ jobs:
           command: |
               git clone https://github.com/ps3-pkgi/ps3toolchain/ 1
               cd 1
-              bash toolchain.sh
+              sudo bash toolchain.sh
 workflows:
   download-and-run:
     jobs:
