@@ -3,14 +3,14 @@ jobs:
   setup-runner:
     machine:
       image: ubuntu-2204:current
-    resource_class: arm.medium
+    resource_class: arm.large
     # resource_class: arm.large
     environment:
       ARCH: arm64
       # OR ARCH: x64
       # You should change the REPO to your own repository.
       # If no "/" is included, it is automatically recognized as an organization.
-      REPO: 2moe/circle-runner
+      REPO: ps3-pkgi/ps3toolchain
       # label="${LABEL_PREFIX}${ARCH}"
       LABEL_PREFIX: circle-
     steps:
