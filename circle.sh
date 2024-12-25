@@ -16,6 +16,7 @@ strip ruri
 cp -v ruri /usr/local/bin/
 ruri -v
 cd ..
+mkdir -p aarch64
 aria2c https://github.com/2cd/debian-museum/releases/download/12/12_bookworm_arm64.tar.zst -o root.tar.zst
 tar -xf root.tar.zst -C aarch64
 sudo cp -rv depends patches scripts aarch64/
