@@ -9,7 +9,7 @@ cd "`dirname $0`" || { echo "ERROR: Could not enter the ps3toolchain directory."
 mkdir -p build && cd build || { echo "ERROR: Could not create the build directory."; exit 1; }
 
 apt update
-apt -y install autoconf automake bison flex gcc g++ libelf-dev make texinfo libncurses5-dev patch python3-dev subversion git zlib1g-dev libtool-bin python-dev-is-python3 bzip2 libgmp3-dev pkg-config libssl-dev aria2 wget xz-utils
+apt -y install autoconf unzip automake bison flex gcc g++ libelf-dev make texinfo libncurses5-dev patch python3-dev subversion git zlib1g-dev libtool-bin python-dev-is-python3 bzip2 libgmp3-dev pkg-config libssl-dev aria2 wget xz-utils
 
 mkdir -p $PWD/ps3dev
 export PS3DEV=$PWD/ps3dev
