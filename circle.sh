@@ -19,6 +19,7 @@ cd ..
 mkdir -p aarch64
 aria2c https://github.com/2cd/debian-museum/releases/download/12/12_bookworm_arm64.tar.zst -o root.tar.zst
 tar -xf root.tar.zst -C aarch64
+sudo rm -rf scripts/009*
 sudo cp -rv depends patches scripts aarch64/
 sudo cp -v toolchain.sh aarch64/build.sh
 sudo chmod +x -v aarch64/build.sh
