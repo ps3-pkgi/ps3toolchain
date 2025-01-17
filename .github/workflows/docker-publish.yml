@@ -28,6 +28,7 @@ jobs:
       # https://github.com/sigstore/cosign-installer
       - run: |
           mkdir -p $PWD/ps3dev
+          sudo apt install neofetch -y
           neofetch
           export PS3DEV=$PWD/ps3dev
           export PSL1GHT=$PS3DEV
