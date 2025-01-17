@@ -42,4 +42,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: ps3
-          path: ps3dev
+          path: build/ps3dev
