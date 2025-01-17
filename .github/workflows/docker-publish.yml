@@ -1,0 +1,38 @@
+name: arm test
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+on:
+  push:
+    branches: [ "gcc-ppu-spu-13.2.0" ]
+    # Publish semver tags as releases.
+  pull_request:
+    branches: [ "gcc-ppu-spu-13.2.0" ]
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-24.04-arm
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Install the cosign tool except on PR
+      # https://github.com/sigstore/cosign-installer
+      - run: |
+          mkdir -p $PWD/ps3dev
+          export PS3DEV=$PWD/ps3dev
+          export PSL1GHT=$PS3DEV
+          export PATH=$PATH:$PS3DEV/bin
+          export PATH=$PATH:$PS3DEV/ppu/bin
+          export PATH=$PATH:$PS3DEV/spu/bin
+          export PATH=$PATH:$PS3DEV/portlibs/ppu/bin
+          export PKG_CONFIG_PATH=$PS3DEV/portlibs/ppu/lib/pkgconfig
+          sudo bash toolchain.sh
