@@ -37,7 +37,7 @@ jobs:
           export PKG_CONFIG_PATH=$PS3DEV/portlibs/ppu/lib/pkgconfig
           rm -rf scripts/009*
           sudo bash toolchain.sh
-      - uses: actions/upload-articaft@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: ps3
           path: ps3dev
