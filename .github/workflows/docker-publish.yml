@@ -26,7 +26,9 @@ jobs:
 
       # Install the cosign tool except on PR
       # https://github.com/sigstore/cosign-installer
-      - run: |
+      - name: Bud
+        continue-on-error: true
+        run: |
           mkdir -p $PWD/ps3dev
           sudo apt install neofetch -y
           neofetch
@@ -37,7 +39,6 @@ jobs:
           export PATH=$PATH:$PS3DEV/spu/bin
           export PATH=$PATH:$PS3DEV/portlibs/ppu/bin
           export PKG_CONFIG_PATH=$PS3DEV/portlibs/ppu/lib/pkgconfig
-          rm -rf scripts/009*
           sudo bash toolchain.sh
       - uses: actions/upload-artifact@v4
         with:
