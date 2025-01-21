@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/sh -x
 # ps3libraries.sh by Naomi Peori (naomi@peori.ca)
 set -x
 PS3LIBRARIES="ps3libraries"
