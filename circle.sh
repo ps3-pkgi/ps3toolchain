@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 set -x
 
 sudo apt install --no-install-recommends -y curl xz-utils git aria2 \
