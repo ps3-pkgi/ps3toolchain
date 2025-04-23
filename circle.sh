@@ -1,5 +1,7 @@
 #!/bin/env bash
-set -x
+set -xe
+
+sudo apt update
 
 sudo apt install --no-install-recommends -y curl xz-utils git aria2 \
   make \
