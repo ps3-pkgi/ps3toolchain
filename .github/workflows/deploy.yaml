@@ -15,9 +15,7 @@ jobs:
       matrix:
         include:
         - os: ubuntu-24.04
-          cpu: ppu
-        - os: ubuntu-22.04
-          cpu: spu
+        - os: ubuntu-24.04-arm
     defaults:
       run:
         shell: bash
@@ -88,7 +86,7 @@ jobs:
         export PATH=$PATH:$PS3DEV/spu/bin
         export PATH=$PATH:$PS3DEV/portlibs/ppu/bin
         export PKG_CONFIG_PATH=$PS3DEV/portlibs/ppu/lib/pkgconfig
-        bash arm64.sh
+        bash toolchain.sh
     - uses: actions/upload-artifact@v4
       if: startsWith(matrix.cpu, 'ppu')
       with:
